@@ -1,0 +1,17 @@
+{
+  "text.autoconfig.noflamesmoke.title": "No Flame & Smoke \u2013 Settings",
+  "text.autoconfig.noflamesmoke.option.disableAll": "Disable all",
+  "text.autoconfig.noflamesmoke.option.disableFlame": "Hide flame",
+  "text.autoconfig.noflamesmoke.option.disableSmoke": "Hide smoke",
+  "text.autoconfig.noflamesmoke.option.onlySelectedBlocks": "Only selected blocks",
+  "text.autoconfig.noflamesmoke.option.affectTorches": "Torches (incl. redstone)",
+  "text.autoconfig.noflamesmoke.option.affectSoulVariants": "Soul variants",
+  "text.autoconfig.noflamesmoke.option.affectCampfires": "Campfires",
+  "text.autoconfig.noflamesmoke.option.affectCandles": "Candles",
+  "text.autoconfig.noflamesmoke.option.affectFurnaces": "Furnace/Smoker/Blast furnace",
+  "text.autoconfig.noflamesmoke.option.affectLanterns": "Lanterns",
+  "text.autoconfig.noflamesmoke.category.master": "Main Settings",
+  "text.autoconfig.noflamesmoke.category.particles": "Particles",
+  "text.autoconfig.noflamesmoke.category.scope": "Scope",
+  "text.autoconfig.noflamesmoke.category.blocks": "Blocks"
+}

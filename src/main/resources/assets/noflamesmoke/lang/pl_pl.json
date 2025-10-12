@@ -1,0 +1,24 @@
+{
+  "nfs.title": "No Flame & Smoke",
+  "nfs.button.apply": "Zastosuj do wszystkich",
+  "nfs.button.restore": "Przywróć vanillę",
+  "nfs.button.done": "Gotowe",
+  "nfs.on": "ON",
+  "nfs.off": "OFF",
+
+  "nfs.column.flame": "Płomień",
+  "nfs.column.smoke": "Dym",
+
+  "nfs.block.torch": "Pochodnia",
+  "nfs.block.wall_torch": "Pochodnia ścienna",
+  "nfs.block.redstone_torch": "Pochodnia redstone",
+  "nfs.block.wall_redstone_torch": "Pochodnia redstone (ścienna)",
+  "nfs.block.soul_torch": "Pochodnia dusz",
+  "nfs.block.wall_soul_torch": "Pochodnia dusz (ścienna)",
+  "nfs.block.candles": "Świece",
+  "nfs.block.furnace": "Piec",
+  "nfs.block.smoker": "Wędzarnia",
+  "nfs.block.blast_furnace": "Piec hutniczy",
+  "nfs.block.copper_torch": "Miedziana pochodnia",
+  "nfs.block.wall_copper_torch": "Miedziana pochodnia (ścienna)"
+}

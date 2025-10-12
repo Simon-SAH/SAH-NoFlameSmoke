@@ -1,0 +1,56 @@
+{
+  "mappings": {
+    "com/sah/noflamesmoke/mixin/AbstractCandleBlockMixin": {
+      "randomDisplayTick": "Lnet/minecraft/class_5540;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+    },
+    "com/sah/noflamesmoke/mixin/BlastFurnaceBlockMixin": {
+      "randomDisplayTick": "Lnet/minecraft/class_3710;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+    },
+    "com/sah/noflamesmoke/mixin/FurnaceBlockMixin": {
+      "randomDisplayTick": "Lnet/minecraft/class_3865;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+    },
+    "com/sah/noflamesmoke/mixin/RedstoneTorchBlockMixin": {
+      "randomDisplayTick": "Lnet/minecraft/class_2459;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+    },
+    "com/sah/noflamesmoke/mixin/SmokerBlockMixin": {
+      "randomDisplayTick": "Lnet/minecraft/class_3716;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+    },
+    "com/sah/noflamesmoke/mixin/TorchBlockMixin": {
+      "randomDisplayTick": "Lnet/minecraft/class_2527;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+    },
+    "com/sah/noflamesmoke/mixin/WallRedstoneTorchBlockMixin": {
+      "randomDisplayTick": "Lnet/minecraft/class_2458;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+    },
+    "com/sah/noflamesmoke/mixin/WallTorchBlockMixin": {
+      "randomDisplayTick": "Lnet/minecraft/class_2555;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "com/sah/noflamesmoke/mixin/AbstractCandleBlockMixin": {
+        "randomDisplayTick": "Lnet/minecraft/class_5540;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+      },
+      "com/sah/noflamesmoke/mixin/BlastFurnaceBlockMixin": {
+        "randomDisplayTick": "Lnet/minecraft/class_3710;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+      },
+      "com/sah/noflamesmoke/mixin/FurnaceBlockMixin": {
+        "randomDisplayTick": "Lnet/minecraft/class_3865;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+      },
+      "com/sah/noflamesmoke/mixin/RedstoneTorchBlockMixin": {
+        "randomDisplayTick": "Lnet/minecraft/class_2459;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+      },
+      "com/sah/noflamesmoke/mixin/SmokerBlockMixin": {
+        "randomDisplayTick": "Lnet/minecraft/class_3716;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+      },
+      "com/sah/noflamesmoke/mixin/TorchBlockMixin": {
+        "randomDisplayTick": "Lnet/minecraft/class_2527;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+      },
+      "com/sah/noflamesmoke/mixin/WallRedstoneTorchBlockMixin": {
+        "randomDisplayTick": "Lnet/minecraft/class_2458;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+      },
+      "com/sah/noflamesmoke/mixin/WallTorchBlockMixin": {
+        "randomDisplayTick": "Lnet/minecraft/class_2555;method_9496(Lnet/minecraft/class_2680;Lnet/minecraft/class_1937;Lnet/minecraft/class_2338;Lnet/minecraft/class_5819;)V"
+      }
+    }
+  }
+}

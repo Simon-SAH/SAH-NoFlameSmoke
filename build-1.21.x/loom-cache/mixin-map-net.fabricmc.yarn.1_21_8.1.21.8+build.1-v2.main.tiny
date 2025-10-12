@@ -1,0 +1,3 @@
+v1	named	intermediary
+FIELD	com/sah/noflamesmoke/mixin/TorchBlockMixin	Lnet/minecraft/particle/SimpleParticleType;	particle	field_22155
+METHOD	com/sah/noflamesmoke/mixin/AbstractCandleBlockMixin	(Lnet/minecraft/block/BlockState;)Ljava/lang/Iterable;	getParticleOffsets	method_31613

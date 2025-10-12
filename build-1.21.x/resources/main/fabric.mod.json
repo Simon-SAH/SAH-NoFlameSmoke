@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "noflamesmoke",
+  "version": "${version}",
+  "name": "No Flame & Smoke",
+  "description": "Toggle the flame/smoke particles for torches, candles and furnaces.",
+  "authors": ["SAH", "Tex"],
+  "license": "MIT",
+  "icon": "assets/noflamesmoke/icon.png",
+  "environment": "client",
+
+  "entrypoints": {
+    "client": ["com.sah.noflamesmoke.NoFlameSmokeMod"],
+    "modmenu": ["com.sah.noflamesmoke.integration.ModMenuEntry"]
+  },
+
+  "mixins": ["noflamesmoke.mixins.json"],
+
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": ">=1.21 <1.22"
+  },
+
+  "suggests": {
+    "modmenu": ">=15.0.0-beta.3"
+  },
+
+  "contact": {
+    "homepage": "https://sahproject.co.uk",
+    "email": "kontakt@sahproject.co.uk",
+    "email_alt": "sah.projectmc@gmail.com"
+  }
+}
