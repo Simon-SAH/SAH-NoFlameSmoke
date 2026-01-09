@@ -1,0 +1,52 @@
+{
+  "disableAllFlames": false,
+  "disableAllSmoke": false,
+  "torch": {
+    "flame": false,
+    "smoke": false
+  },
+  "wall_torch": {
+    "flame": false,
+    "smoke": false
+  },
+  "redstone_torch": {
+    "flame": false,
+    "smoke": false
+  },
+  "wall_redstone_torch": {
+    "flame": false,
+    "smoke": false
+  },
+  "soul_torch": {
+    "flame": false,
+    "smoke": false
+  },
+  "wall_soul_torch": {
+    "flame": false,
+    "smoke": false
+  },
+  "candles": {
+    "flame": false,
+    "smoke": false
+  },
+  "copper_torch": {
+    "flame": false,
+    "smoke": false
+  },
+  "wall_copper_torch": {
+    "flame": false,
+    "smoke": false
+  },
+  "furnace": {
+    "flame": false,
+    "smoke": false
+  },
+  "smoker": {
+    "flame": true,
+    "smoke": true
+  },
+  "blast_furnace": {
+    "flame": false,
+    "smoke": false
+  }
+}
