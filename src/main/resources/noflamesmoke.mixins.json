@@ -2,18 +2,16 @@
   "required": false,
   "minVersion": "0.8",
   "package": "com.sah.noflamesmoke.mixin",
-  "compatibilityLevel": "JAVA_21",
+  "compatibilityLevel": "JAVA_25",
   "client": [
     "TorchBlockMixin",
     "WallTorchBlockMixin",
     "RedstoneTorchBlockMixin",
-    "WallRedstoneTorchBlockMixin",
-
     "AbstractCandleBlockMixin",
-
     "FurnaceBlockMixin",
     "SmokerBlockMixin",
-    "BlastFurnaceBlockMixin"
+    "BlastFurnaceBlockMixin",
+    "RedstoneWallTorchBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 0

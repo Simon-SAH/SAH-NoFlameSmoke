@@ -2,15 +2,15 @@ package com.sah.noflamesmoke.mixin;
 
 import com.sah.noflamesmoke.config.ConfigManager;
 import com.sah.noflamesmoke.config.NFSConfig;
-import net.minecraft.block.AbstractCandleBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.particle.ParticleManager;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.World;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.ParticleEngine;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.AbstractCandleBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.core.particles.ParticleTypes;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,32 +20,45 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AbstractCandleBlock.class)
 public abstract class AbstractCandleBlockMixin {
 
-    @Shadow protected abstract Iterable<Vec3d> getParticleOffsets(BlockState state);
+    @Shadow protected abstract Iterable<Vec3> getParticleOffsets(BlockState state);
 
-    @Inject(method = "randomDisplayTick", at = @At("HEAD"), cancellable = true)
-    private void nfs$separateCandleParticles(BlockState state, World world, BlockPos pos, Random random, CallbackInfo ci) {
-        if (!world.isClient() || !AbstractCandleBlock.isLitCandle(state)) return;
-
-        // wyłączamy vanilla – rysujemy selektywnie (flame/smoke osobno)
-        ci.cancel();
+    @Inject(method = "animateTick", at = @At("HEAD"), cancellable = true)
+    private void nfs$separateCandleParticles(BlockState state, Level level, BlockPos pos, RandomSource random, CallbackInfo ci) {
+        if (!level.isClientSide() || !AbstractCandleBlock.isLit(state)) return;
 
         NFSConfig cfg = ConfigManager.get();
         if (cfg == null) return;
 
         final boolean showFlame = ConfigManager.allowFlameVisible(cfg.candles);
         final boolean showSmoke = ConfigManager.allowSmokeVisible(cfg.candles);
+
+        // 🟢 jeśli wszystko dozwolone → zostaw vanilla
+        if (showFlame && showSmoke) {
+            return;
+        }
+
+        // 🔥 tylko gdy coś zmieniamy → anulujemy vanilla
+        ci.cancel();
+
+        // jeśli oba wyłączone → nic nie rysujemy
         if (!showFlame && !showSmoke) return;
 
-        ParticleManager pm = MinecraftClient.getInstance().particleManager;
+        ParticleEngine pm = Minecraft.getInstance().particleEngine;
 
-        // WANILLA: pozycja = pos + offset (offsety nie są względem środka!)
-        for (Vec3d off : this.getParticleOffsets(state)) {
+        for (Vec3 off : this.getParticleOffsets(state)) {
             double x = pos.getX() + off.x;
             double y = pos.getY() + off.y;
             double z = pos.getZ() + off.z;
 
-            if (showFlame) pm.addParticle(ParticleTypes.SMALL_FLAME, x, y, z, 0.0, 0.0, 0.0);
-            if (showSmoke) pm.addParticle(ParticleTypes.SMOKE,      x, y + 0.01, z, 0.0, 0.008, 0.0);
+            float chance = random.nextFloat();
+
+            if (showSmoke && chance < 0.3F) {
+                pm.createParticle(ParticleTypes.SMOKE, x, y + 0.01, z, 0.0, 0.008, 0.0);
+            }
+
+            if (showFlame) {
+                pm.createParticle(ParticleTypes.SMALL_FLAME, x, y, z, 0.0, 0.0, 0.0);
+            }
         }
     }
 }

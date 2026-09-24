@@ -2,41 +2,39 @@ package com.sah.noflamesmoke.mixin;
 
 import com.sah.noflamesmoke.config.ConfigManager;
 import com.sah.noflamesmoke.config.NFSConfig;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.TorchBlock;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.particle.ParticleManager;
-import net.minecraft.particle.ParticleEffect;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.particle.SimpleParticleType;
-import net.minecraft.registry.Registries;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.random.Random;
-import net.minecraft.world.World;
-import org.spongepowered.asm.mixin.Final;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.ParticleEngine;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.TorchBlock;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import net.minecraft.world.level.block.RedstoneTorchBlock;
 
 @Mixin(TorchBlock.class)
 public class TorchBlockMixin {
 
-    @Shadow @Final
-    protected SimpleParticleType particle; // vanilla flame dla tej instancji
 
-    @Inject(method = "randomDisplayTick", at = @At("HEAD"), cancellable = true)
-    private void nfs$randomDisplayTick(BlockState state, World world, BlockPos pos, Random random, CallbackInfo ci) {
-        if (!world.isClient()) return;
+    @Inject(method = "animateTick", at = @At("HEAD"), cancellable = true)
+    private void nfs$randomDisplayTick(BlockState state, Level level, BlockPos pos, RandomSource random, CallbackInfo ci) {
+        if (!level.isClientSide()) return;
+        if (state.getBlock() instanceof RedstoneTorchBlock) return;
 
-        // rozróżnienie typów pochodni
-        boolean isSoul = state.isOf(Blocks.SOUL_TORCH);
-        String path = Registries.BLOCK.getId(state.getBlock()).getPath();
-        boolean isCopper = path.contains("copper_torch");
+        boolean isSoul = state.is(Blocks.SOUL_TORCH);
+        String path = BuiltInRegistries.BLOCK.getKey(state.getBlock()).getPath();
+        boolean isCopper = state.is(Blocks.COPPER_TORCH);
 
         NFSConfig cfg = ConfigManager.get();
+        if (cfg == null) return;
+
         NFSConfig.Toggle t = isSoul
                 ? cfg.soul_torch
                 : (isCopper && cfg.copper_torch != null ? cfg.copper_torch : cfg.torch);
@@ -48,14 +46,26 @@ public class TorchBlockMixin {
 
         ci.cancel(); // sami narysujemy dozwolone cząstki
 
-        ParticleManager pm = MinecraftClient.getInstance().particleManager;
+        ParticleEngine pm = Minecraft.getInstance().particleEngine;
         double x = pos.getX() + 0.5D;
         double y = pos.getY() + 0.7D;
         double z = pos.getZ() + 0.5D;
 
-        if (allowSmoke) pm.addParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
+        if (allowSmoke) {
+            pm.createParticle(ParticleTypes.SMOKE, x, y, z, 0.0D, 0.0D, 0.0D);
+        }
 
-        ParticleEffect flame = isSoul ? ParticleTypes.SOUL_FIRE_FLAME : this.particle;
-        if (allowFlame) pm.addParticle(flame, x, y, z, 0.0D, 0.0D, 0.0D);
+        ParticleOptions flame;
+
+        if (isSoul) {
+            flame = ParticleTypes.SOUL_FIRE_FLAME;
+        } else if (isCopper) {
+            flame = ParticleTypes.COPPER_FIRE_FLAME; // ✔ właściwy particle
+        } else {
+            flame = ParticleTypes.FLAME;
+        }
+        if (allowFlame) {
+            pm.createParticle(flame, x, y, z, 0.0D, 0.0D, 0.0D);
+        }
     }
 }

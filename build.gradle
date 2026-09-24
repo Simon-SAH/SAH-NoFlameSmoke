@@ -1,34 +1,41 @@
 plugins {
     id 'java'
-    id 'fabric-loom' version '1.13.2'
+    id 'net.fabricmc.fabric-loom' version '1.17.12'
 }
 
 group = project.maven_group
 version = project.mod_version
-archivesBaseName = project.archives_base_name
+base {
+    archivesName = project.archives_base_name
+}
 
 repositories {
     mavenCentral()
     maven { url = "https://maven.fabricmc.net/" }
     maven { url = "https://maven.terraformersmc.com/releases/" }
     maven { url = "https://cursemaven.com" }
-
+    maven { url = "https://libraries.minecraft.net/" }
 }
 
 dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "com.terraformersmc:modmenu:17.0.0-beta.1"
+
+
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+    // na razie możesz zostawić lub zakomentować:
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    implementation "com.terraformersmc:modmenu:20.0.0-beta.4"
+
 }
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(25)
     }
     withSourcesJar()
 }
+
 loom {
     runs {
         client {
@@ -47,5 +54,3 @@ processResources {
         expand "version": project.version
     }
 }
-
-

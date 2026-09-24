@@ -5,32 +5,30 @@ import com.sah.noflamesmoke.config.NFSConfig;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.SmokerBlock;
+import net.minecraft.world.level.block.RedstoneWallTorchBlock;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(SmokerBlock.class)
-public class SmokerBlockMixin {
+@Mixin(RedstoneWallTorchBlock.class)
+public class RedstoneWallTorchBlockMixin {
 
     @Inject(method = "animateTick", at = @At("HEAD"), cancellable = true)
-    private void nfs$splitParticles(BlockState state, Level level, BlockPos pos, RandomSource random, CallbackInfo ci) {
+    private void nfs$animateTick(BlockState state, Level level, BlockPos pos, RandomSource random, CallbackInfo ci) {
 
         if (!level.isClientSide()) return;
-        if (!state.getOptionalValue(BlockStateProperties.LIT).orElse(false)) return;
 
         NFSConfig cfg = ConfigManager.get();
         if (cfg == null) return;
 
-        final boolean showSmoke = ConfigManager.allowSmokeVisible(cfg.smoker);
+        NFSConfig.Toggle t = cfg.redstone_torch;
 
-        // 🟢 vanilla
-        if (showSmoke) return;
+        boolean allowSmoke = ConfigManager.allowSmokeVisible(cfg.redstone_torch);
 
-        // 🔥 wyłączamy dym
+        if (allowSmoke) return;
+
         ci.cancel();
     }
 }

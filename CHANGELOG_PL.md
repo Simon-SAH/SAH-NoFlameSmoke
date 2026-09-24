@@ -8,11 +8,45 @@ zgodny z zasadami [Semantic Versioning](https://semver.org/lang/pl/spec/v2.0.0.h
 
 ## [Następna wersja]
 ### Planowane
-- Aktualizacja kompatybilności dla **Minecraft 1.22**.
+
 - Opcjonalny tryb „Compact Mode” dla ekranu konfiguracji.
 - Wsparcie dla lokalizacji (automatyczne wykrywanie polski / angielski).
 - Drobne poprawki wizualne w opisie moda w Mod Menu.
 
+---
+## [1.2.2] - 2026-09-24
+
+### Zaktualizowano
+
+* Dodano pełną kompatybilność z Minecraft **26.3**.
+* Jeden plik JAR obsługuje teraz Minecraft **26.1.2, 26.2 oraz 26.3**.
+
+### Naprawiono
+
+* Naprawiono brak wizualnego odświeżania stanu globalnych przycisków konfiguracji w Minecraft 26.1.2.
+* Naprawiono brak natychmiastowego odświeżania ekranu po użyciu **Restore Vanilla** w Minecraft 26.1.2.
+* Poprawiono działanie **Save & Quit** we wszystkich obsługiwanych wersjach Minecrafta.
+
+### Kompatybilność
+
+* Minecraft **26.1.2 – 26.3**
+* Fabric Loader **0.19.3+**
+* Mod wyłącznie po stronie klienta.
+---
+
+## [1.2.1] - 2026-07-03
+
+### Zaktualizowano
+
+* Zaktualizowano kompatybilność do Minecraft **26.2**.
+---
+## [1.2.0] - 2026-05-08
+### Zaktualizowano
+- Pełna migracja do systemów renderowania i GUI Minecraft 26.1.2.
+- Przeniesiono cały projekt z mappingów Yarn na oficjalne mappingi Mojang.
+- Przebudowano cały ekran konfiguracji w oparciu o nową architekturę `ContainerObjectSelectionList`.
+- Unowocześniono układ oraz zachowanie scrollbara dla lepszej kompatybilności z przyszłymi zmianami GUI Minecrafta.
+- Ulepszono integrację z Mod Menu oraz responsywność interfejsu.
 ---
 
 ## [1.1.2] - 2026-01-08

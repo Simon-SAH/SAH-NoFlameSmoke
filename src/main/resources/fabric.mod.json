@@ -14,21 +14,23 @@
     "modmenu": ["com.sah.noflamesmoke.integration.ModMenuEntry"]
   },
 
-  "mixins": ["noflamesmoke.mixins.json"],
+  "mixins": [
+    "noflamesmoke.mixins.json"
+  ],
 
   "depends": {
-    "fabricloader": ">=0.18.4",
-    "minecraft": ">=1.21.11",
+    "fabricloader": ">=0.19.3",
+    "minecraft": ">=26.1.2 <26.4",
     "fabric-api": "*"
   },
 
   "suggests": {
-    "modmenu": ">=16.0.0-rc2"
+    "modmenu": ">=20.0.0-beta.4"
   },
 
   "contact": {
     "homepage": "https://sahproject.co.uk",
-    "email": "kontakt@sahproject.co.uk",
-    "email_alt": "sah.projectmc@gmail.com"
+    "sources": "https://github.com/SAHProject/NoFlameSmoke",
+    "issues": "https://github.com/SAHProject/NoFlameSmoke/issues"
   }
 }
